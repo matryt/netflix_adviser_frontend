@@ -1,0 +1,42 @@
+<div *ngIf="userEmail">
+  <h2>Bienvenue, {{ userEmail }} !</h2>
+
+  <!-- Affichage conditionnel du formulaire ou du bouton -->
+  <div *ngIf="isWideScreen; else showModalButton">
+    <!-- Formulaire pour ajouter une série -->
+    <form (ngSubmit)="addSerie()">
+      <mat-form-field class="example-full-width">
+        <input type="text" 
+               matInput 
+               [matAutocomplete]="auto" 
+               [(ngModel)]="newSerie" 
+               name="serieSearch"
+               (input)="onSearchChange(newSerie)" 
+               placeholder="Rechercher une série">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSuggestionSelected($event.option.value)" [displayWith]="displaySuggestion">
+          <mat-option *ngFor="let suggestion of suggestions" [value]="suggestion">
+            <div class="suggestion-item">
+              <img [src]="getFullPosterPath(suggestion.posterPath)" alt="{{ suggestion.title }} poster" class="suggestion-poster" />
+              <div>
+                <span class="suggestion-title">{{ suggestion.title }}</span>
+                <span class="suggestion-overview">{{ getOverviewSnippet(suggestion.overview) }}</span>
+              </div>
+            </div>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+  <ng-template #showModalButton>
+    <button (click)="openModal()">Ajouter une série</button>
+  </ng-template>
+
+  <!-- Afficher les séries actuelles -->
+  <div *ngIf="currentSeries.length > 0; else noSeries" class="series-container">
+    <app-serie-card *ngFor="let serie of currentSeries" [serie]="serie"></app-serie-card>
+  </div>
+  <ng-template #noSeries>
+    <p>Vous n'avez pas encore enregistré de séries.</p>
+  </ng-template>
+</div>

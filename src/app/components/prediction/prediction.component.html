@@ -1,0 +1,21 @@
+<div class="prediction-container">
+  <h2>Prédictions de séries</h2>
+  <form (ngSubmit)="getPredictions()">
+    <mat-form-field appearance="fill" class="query-field">
+      <mat-label>Entrez votre requête</mat-label>
+      <input matInput [(ngModel)]="query" name="query" placeholder="Ex: Je veux une série anglaise des années 90" required />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+      {{ loading ? 'Chargement...' : 'Obtenir des prédictions' }}
+    </button>
+  </form>
+
+  <div *ngIf="predictions.length > 0; else noPredictions" class="predictions-list">
+    <app-serie-card *ngFor="let prediction of predictions" [serie]="prediction.serie"></app-serie-card>
+  </div>
+
+  <ng-template #noPredictions>
+    <p>Aucune prédiction disponible pour le moment.</p>
+  </ng-template>
+</div>

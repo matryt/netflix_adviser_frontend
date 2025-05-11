@@ -1,0 +1,52 @@
+.serie-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px;
+  padding: 10px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.serie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.serie-poster {
+  width: 60%;
+  aspect-ratio: 2 / 3; /* Maintain a 2:3 aspect ratio */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.serie-details {
+  padding: 5px;
+}
+
+.serie-details h3 {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #333;
+}
+
+.serie-details p {
+  font-size: 0.9em;
+  color: #666;
+  line-height: 1.4;
+  max-height: 4.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-image {
+  height: 270px;
+}

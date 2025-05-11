@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Sélectionnez une série</h2>
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <input type="text" 
+           matInput 
+           [matAutocomplete]="auto" 
+           [(ngModel)]="newSerie" 
+           name="serieSearch"
+           (input)="onSearchChange(newSerie)" 
+           placeholder="Rechercher une série">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSuggestionSelected($event.option.value)" [displayWith]="displaySuggestion" class="wide-autocomplete">
+      <mat-option *ngFor="let suggestion of data.suggestions" [value]="suggestion">
+        <div class="suggestion-item">
+          <img [src]="getFullPosterPath(suggestion.posterPath)" alt="{{ suggestion.title }} poster" class="suggestion-poster" />
+          <div>
+            <span class="suggestion-title">{{ suggestion.title }}</span>
+            <span class="suggestion-overview">{{ getOverviewSnippet(suggestion.overview) }}</span>
+          </div>
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()">Annuler</button>
+  <button mat-button [disabled]="!selectedSerie" (click)="confirmSelection()">Ajouter</button>
+</mat-dialog-actions>

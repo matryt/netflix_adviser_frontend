@@ -1,0 +1,10 @@
+<div class="serie-card">
+  <img [src]="serie.posterPath" alt="{{ serie.title }} poster" class="serie-poster" *ngIf="serie.posterPath" />
+  <div *ngIf="!serie.posterPath" class="no-image">
+      <p>Aucune image disponible</p>
+  </div>
+  <div class="serie-details">
+    <h3>{{ serie.title }}</h3>
+    <p>{{ serie.overview }}</p>
+  </div>
+</div>

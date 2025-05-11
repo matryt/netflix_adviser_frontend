@@ -1,12 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import {AsyncPipe, NgIf} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
+import {CustomAuthService} from './services/auth-service.service';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [
+    AsyncPipe,
+    NgIf,
+    RouterOutlet,
+  ],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+  constructor(public auth: CustomAuthService) {
+    this.auth.getUser().subscribe(user => console.log(user));
+  }
+
+  login() {
+    this.auth.login();
+  }
+
+  logout() {
+    this.auth.logout();
+  }
 }

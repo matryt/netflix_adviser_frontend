@@ -1,0 +1,94 @@
+/* General styles for the series container */
+.series-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: stretch; /* Ensure all cards have the same height */
+  margin-top: 30px;
+}
+
+.serie-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(33.333% - 16px); /* Ensure cards are responsive */
+  max-width: 300px;
+  height: 90%; /* Allow cards to stretch */
+}
+
+/* Adjustments for buttons and forms */
+button {
+  margin-top: 10px;
+}
+
+input {
+  margin-bottom: 15px;
+}
+
+div.mat-mdc-autocomplete-panel, .mat-mdc-option.mdc-list-item {
+  background-color: white !important;
+}
+
+/* Styles for autocomplete suggestions */
+.suggestion-item {
+  display: flex;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.suggestion-title {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.suggestion-overview {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  display: -webkit-box;
+  line-clamp: 5;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.suggestion-poster {
+  width: auto;
+  height: 100px;
+  object-fit: cover;
+}
+
+.suggestion-details {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .suggestion-overview {
+    display: none;
+  }
+
+  .suggestion-poster {
+    width: 80px;
+  }
+}
+
+@media (min-width: 768px) {
+  .example-full-width {
+    width: 600px;
+  }
+}
+
