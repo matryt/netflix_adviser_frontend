@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {AsyncPipe, NgIf} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {CustomAuthService} from './services/auth-service.service';
+import { MenuComponent } from "./components/menu/menu.component";
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -10,7 +11,8 @@ import {CustomAuthService} from './services/auth-service.service';
     AsyncPipe,
     NgIf,
     RouterOutlet,
-  ],
+    MenuComponent
+],
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
